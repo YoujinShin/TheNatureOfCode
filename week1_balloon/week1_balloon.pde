@@ -1,6 +1,8 @@
 
 //Nature of Code week1 assignment
 
+// Test comment
+
 //Walker w;
 Walker[] w;
 
