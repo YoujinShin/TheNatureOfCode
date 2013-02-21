@@ -10,16 +10,17 @@ class Walker {
   PVector reaction;
   
   Boolean alive;
+  int number = 0;
   
   Walker() {
     location = new PVector(width/2, height);
-    noff = new PVector(random(1000), random(1000));
+    noff = new PVector(random(10000), random(10000));
     reaction = new PVector(0, 0);
     generator = new Random();
     alive = true;
   }
   
-  void display(Bob b) {
+  int display(Bob b) {
     float tempx = b.location.x;
     float tempy = b.location.y;
     
@@ -30,9 +31,7 @@ class Walker {
     
     float distance = dist(location.x, location.y, tempx, tempy);
     
-    if (distance < 100) {
-      d = ( d * sd ) + map(distance, 0, radius, 0, radius);
-      d2 = ( d * sd ) + map(distance, 0, radius, radius, 20);
+    if (distance < b.mass+10) {
       alive = false;
     } else {
       if (alive) {
@@ -41,15 +40,22 @@ class Walker {
         noStroke();
         fill(255, 255, 0, 150);
         ellipse(location.x, location.y, d, d);
+        //number = 0;
       }
     }
-
+    if (alive) {
+      number = 0;
+    } else {
+      number = 1;
+    }
+    //println(number);
+    return number;
   }
   
   void walk() {
    
-    location.x = map(noise(noff.x), 0, 1, width/2, width);
-    location.y = map(noise(noff.y), 0, 1, 0, height);
+    location.x = map(noise(noff.x), 0, 1, width/3, width+20);
+    location.y = map(noise(noff.y), 0, 1, 0-10, height+10);
     
     noff.add(0.01, 0.01, 0);
   }
