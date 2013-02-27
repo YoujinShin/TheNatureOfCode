@@ -4,7 +4,7 @@ PImage img;
 //Vehicle myVehicle;
 
 void setup() {
-  size(600, 400, P2D);
+  size(1200, 600, P2D);
   
   img = loadImage("texture.png");
   smooth();
@@ -42,6 +42,6 @@ void draw() {
 void mousePressed() {
   myFlow.init();
   imageMode(CENTER);
-  tint(0, 153, 204);  // Tint blue and set transparency
-  image(img, mouseX, mouseY, 300, 300);
+  tint(0, 255, 255);  // Tint blue and set transparency
+  image(img, mouseX, mouseY, 700, 700);
 }
